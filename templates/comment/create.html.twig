@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block title 'Commentaires' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('comment') }}
+{% endblock %}
+
+{% block body %}
+    <div class="commentary">
+        <h1>Commentaires </h1>
+        <div class="comment-form">
+            {{ form_start(formComment) }}
+            <div class="form">
+                {{ form_row(formComment.content) }}
+                <div class="form-row">
+                    <input type="submit" value="Add Comment">
+                </div>
+            </div>
+            {{ form_end(formComment) }}
+        </div>
+        <div class="comments">
+            {% for comment in movie.comments %}
+                <div class="comment-box">
+                    <div class="content">
+                        Commentaire : <p>{{ comment.content }}</p>
+                    </div>
+                    <div>
+                        publié le {{ comment.getcreatedAt | date('d/m/Y') }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

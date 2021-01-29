@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block title %}Search{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('search') }}
+{% endblock %}
+
+{% block body %}
+    <h1 class="title">Rechercher un film</h1>
+    <div class="search-bar">
+        <label for="search_input"></label>
+        <input type="search" id="search_input" class="input" placeholder="Saisir un film..">
+        <button class="search-btn" id="search_btn" type="submit">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+
+    <div id="alert" style="display: none">
+        {# message d'information #}
+    </div>
+    <div class="cardgroup" id="cardgroup">
+        {# Affichage de la liste des cards #}
+    </div>
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('tmdb') }}
+    {% endblock %}
+{% endblock %}

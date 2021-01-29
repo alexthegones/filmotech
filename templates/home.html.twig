@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block title %} Accueil
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('card') }}
+{% endblock %}
+
+{% block body %}
+    <form action="{{ path('movie_search_request') }}" method="post" class="search-bar" >
+        <input type="search" name="search" id="search" class="search" pattern=".*\S.*">
+        <button class="search-btn" type="submit">
+            <span>Search</span>
+        </button>
+    </form>
+    <div class="cards">
+        {% for movie in movies %}
+            <div class="card">
+                <img src="{{ movie.poster }}" class="card-img" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ movie.name }}</h5>
+                    <small class="release"> Sortie le {{ movie.getReleaseAt|date('d/m/Y') }}</small>
+                    <p class="synopsis">{{ movie.synopsis }}</p>
+                    <div class="buttons">
+                        <form action="{{ path('movie_delete',{id: movie.id}) }}" method="POST"
+                              onsubmit="return confirm('Etês-vous sûr de vouloir supprimer ce film ?')">
+                            <button type="submit" class="btn_delete"><i class="fas fa-trash"></i></button>
+                        </form>
+                        <a href="{{ path('movie_comment', {id: movie.id}) }}" class="btn_comment"><i
+                                    class="fas fa-comments"></i></a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <h3>Pas de Films a affiché pour le moment..</h3>
+        {% endfor %}
+    </div>
+{% endblock %}
