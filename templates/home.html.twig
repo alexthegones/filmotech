@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %} Accueil
+{% block title %} Home
 {% endblock %}
 
 {% block stylesheets %}
@@ -7,13 +7,13 @@
 {% endblock %}
 
 {% block body %}
-    <form action="{{ path('movie_search_request') }}" method="post" class="search-bar" >
-        <input type="search" name="search" id="search" class="search" pattern=".*\S.*">
+    <form action="{{ path('movie_search_request') }}" method="get" class="search-bar" >
+        <input type="search" name="query" id="search" class="search">
         <button class="search-btn" type="submit">
             <span>Search</span>
         </button>
     </form>
-    <div class="cards">
+    <div class="cards" >
         {% for movie in movies %}
             <div class="card">
                 <img src="{{ movie.poster }}" class="card-img" alt="...">

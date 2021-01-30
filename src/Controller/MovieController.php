@@ -89,21 +89,23 @@ class MovieController extends AbstractController
     }
 
     /**
-     * @Route("/", name="movie_search_request", methods={"POST", "GET"})
-     * @param MovieRepository $movies
+     * @Route("/search/{query}", name="movie_search_request", methods={"POST", "GET"})
+     * @param MovieRepository $repo
      * @param Request $request
-     * @return JsonResponse
+     * @return Response
      */
-    public function handleSearchRequest(MovieRepository $movies, Request $request)
+    public function handleSearchRequest(MovieRepository $repo, $query = null, Request $request): Response
     {
-        $value = $request->get('search');
-        dd($value);
-        $query = $this->getDoctrine()->getRepository(Movie::class)->findByMovieName($value);
-        if ($query) {
-            return new JsonResponse($query);
+        $value = $request->get('query');
+        if (!empty($value)) {
+            $movies = $repo->findByMovieName($value);
         } else {
-            $movies->allMovies();
+            $movies = $repo->allMovies();
         }
+
+        return $this->render('home.html.twig', [
+            'movies' => $movies
+        ]);
     }
 
     /**

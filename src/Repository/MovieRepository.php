@@ -29,16 +29,16 @@ class MovieRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param $value
+     * @param $string
      * @return Movie[] Returns an array of Movie objects
      */
 
-    public function findByMovieName($value): array
+    public function findByMovieName($string): array
     {
         return $this->createQueryBuilder('q')
-            ->andWhere('q.name = :query')
-            ->setParameter('query', "%" . $value . "%")
-//            ->orderBy('m.id', 'ASC')
+            ->andWhere('q.name LIKE :query')
+            ->setParameter('query', "%" . $string . "%")
+            ->orderBy('q.release_at', 'ASC')
 //            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
