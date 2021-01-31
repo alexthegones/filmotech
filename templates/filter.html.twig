@@ -1,18 +1,7 @@
-{% extends 'base.html.twig' %}
-{% block title %} Home
-{% endblock %}
-
 {% block stylesheets %}
     {{ encore_entry_link_tags('card') }}
 {% endblock %}
-
 {% block body %}
-    <form action="{{ path('movie_search_request') }}" method="get" class="search-bar">
-        <input type="search" name="query" id="search" class="search">
-        <button class="search-btn" type="submit">
-            <span>Search</span>
-        </button>
-    </form>
     <div class="cards">
         {% for movie in movies %}
             <div class="card">
@@ -32,10 +21,7 @@
                 </div>
             </div>
         {% else %}
-            <h3>Pas de Films a affiché pour le moment..</h3>
+            <div id="notfound"><h3>Aucun film n'a été trouvé...</h3></div>
         {% endfor %}
     </div>
-    {% block javascripts %}
-        {{ encore_entry_script_tags('filters') }}
-    {% endblock %}
 {% endblock %}

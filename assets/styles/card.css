@@ -200,7 +200,7 @@ body, .search-bar {
 .card .card-body .synopsis {
     color: #e6e6e6;
     overflow-y: scroll;
-    line-height: 24px;
+    line-height: 20px;
     height: 65%;
     font-size: 20px;
     padding: 1rem;
@@ -233,7 +233,7 @@ body, .search-bar {
 
 .buttons {
     display: flex;
-    padding: 10px;
+    padding: 2px;
     align-items: center;
     text-align: center;
     justify-content: center;
@@ -242,7 +242,7 @@ body, .search-bar {
 .btn_delete {
     width: 70px;
     height: 30px;
-    font-size: 14px;
+    font-size: 13px;
     color: #fff;
     background-color: red;
     border: none;

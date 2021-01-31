@@ -99,10 +99,14 @@ class MovieController extends AbstractController
         $value = $request->get('query');
         if (!empty($value)) {
             $movies = $repo->findByMovieName($value);
+            return new JsonResponse([
+                'content' => $this->renderView(
+                    'filter.html.twig', ['movies' => $movies]
+                )
+            ]);
         } else {
             $movies = $repo->allMovies();
         }
-
         return $this->render('home.html.twig', [
             'movies' => $movies
         ]);
@@ -146,6 +150,6 @@ class MovieController extends AbstractController
             throw new Exception("Le film existe deja dans la base de donnée");
         }
 
-        return new JsonResponse(['message' => 'Réponse OK !'], 200);
+        return new JsonResponse(['message' => 'Ajout du film effectué!'], 200);
     }
 }

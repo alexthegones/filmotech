@@ -1,4 +1,10 @@
 /********** COMMENT *********/
+body {
+    background-image: url("https://images.pexels.com/photos/269140/pexels-photo-269140.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+    background-repeat: repeat-y;
+    background-size: cover;
+}
+
 .commentary {
     margin: 50px auto;
     max-width: 680px;

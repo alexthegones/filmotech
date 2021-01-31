@@ -22,6 +22,7 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('tmdb', './assets/js/tmdb.js')
+    .addEntry('filters', './assets/js/filters.js')
     .addEntry('search', './assets/styles/search.css')
     .addEntry('card', './assets/styles/card.css')
     .addEntry('comment', './assets/styles/comment.css')
